@@ -9,7 +9,7 @@ Before beginning this, make sure that you have the "remote-explorer" extension i
     `srun --pty --partition=duchin-interactive --mem=8G --time=08:00:00 bash`
 3. Leave this terminal open and don't touch it
 4. Open VSCode and open the "remote explorer" tab
-5. Click on the +icon when VSCode asks for a ssh-login username, enter `NETID@loclahost -p 8022`.
+5. Click on the +icon when VSCode asks for a ssh-login username, enter `NETID@localhost -p 8022`.
    VSCode will then take care of all of the connecting for you.
 
 
