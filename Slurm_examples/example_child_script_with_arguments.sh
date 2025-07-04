@@ -6,7 +6,7 @@
 #SBATCH --error=slurm_logs/arguments_slurm_error_%j.log # The %j will be replaced with the SLURM job ID
 
 
-name=$0 # Get the name of the script being executed
+command=$0 # Get the name of the command being executed currently
 arg1=$1 # Get the first argument passed to the script
 arg2=$2 # Get the second argument passed to the script
 
@@ -19,6 +19,6 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "Job Name: $SLURM_JOB_NAME" >$2
 echo "Job ID: $SLURM_JOB_ID" >$2
 
-echo $name
+echo "Current command: $command"
 echo "Argument 1: $arg1"
 echo "Argument 2: $arg2"

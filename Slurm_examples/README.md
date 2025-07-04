@@ -216,6 +216,11 @@ things on the cluster, you will want to run a bunch of jobs all at once. General
 way to do this is to create a script that will then generate a bunch of jobs for you. This script
 just creates a single job that will print to the "single_sub_slurm_output.out" file.
 
+You should execute this file using
+
+```bash
+./running_subscripts.sh
+```
 
 ## `running_subscripts_with_arguments.sh`
 
