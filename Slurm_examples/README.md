@@ -255,8 +255,12 @@ Argument 2: World
 ```
 
 Okay, so we can now make a list of arguments to pass to our child script, and we do that in
-this example file.
+the `ex3_running_subscripts_with_arguments.sh` file. Feel free to dig into these files and see 
+what happens when you execute the following command:
 
+```console
+./ex3_running_subscripts_with_arguments.sh
+```
 
 ## `ex4_running_subscripts_with_python_clis.sh`
 
@@ -304,4 +308,9 @@ how keyword arguments are passed to a python function.
 
 
 When it comes to batching things with SLURM, not a whole lot changes from what we did in
-the previous example as you can see if you dig through the files.
+the previous example as you can see if you dig through the files. To watch everything in action,
+you can run the following command:
+
+```console
+./ex4_running_subscripts_with_python_clis.sh
+```
