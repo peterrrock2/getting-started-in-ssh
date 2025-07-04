@@ -97,8 +97,8 @@ When you have installed FileZilla, you can open it and you should see something 
 At the top of the window, you will need to fill in the following fields:
 
 - Host Name: g2-login.coecis.cornell.edu
-- User Name: <NETID>
-- Password: <YOUR NETID PASSWORD>
+- User Name: YOUR_NETID
+- Password: YOUR_NETID_PASSWORD
 - Port: 22
 
 
