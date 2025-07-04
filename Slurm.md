@@ -1,7 +1,20 @@
-# Slurm
+# Simple Linux Utility for Resource Management (SLURM)
 
-There is a lot of things that you can do with SLURM. However, for the most part,
-you all will mainly be interested in three commands.
+There is a ton of stuff that you can actually do with SLURM if you are an experienced user,
+but, for the most part, you will only need to know a few commands to begin working
+on the cluster:
+
+- `sbatch`: Submit a job to the cluster
+- `squeue`: Get information about the jobs that are currently in the job queue
+- `sacct`: Get information about a job that has been run
+
+Below, you will find a description of what each of these commands does, and in the folder
+`Slurm_examples` you will find some example scripts that can help you with getting some 
+slurm jobs up and running.
+
+> Note: If you ever plan to run > 200 jobs, you should talk to me about it first. There
+> are ways to do this without hogging resources on the cluster (we would like to be good
+> neighbors with other researchers).
 
 ## `sbatch`
 
@@ -67,6 +80,25 @@ you would put the following lines at the top of your script file:
 # The rest of the script goes here
 ```
 
+## `squeue`
+
+The `squeue` command is used to get information about the jobs that are currently in the queue.
+You can call the command with no arguments to see all of the jobs in the queue, but that will
+probably not be very useful to you. Instead, you can use the `-u` flag to see only the jobs that
+a particular user has in the queue:
+
+```console
+squeue -u <NETID>
+```
+
+This will give you a bunch of information, but the formatting is not the best. Here is another
+option that will give you longer job names and formats the output a bit better:
+
+```console
+squeue -o "%8i %10P %30j %8T %10M %5D %R" -u <NETID>
+```
+
+
 ## `sacct`
 
 The `sacct` command is used to get information about a job that has been run. Mainly, this
@@ -110,24 +142,3 @@ above example, I have specified the following fields:
 - `MAXRSS`: The maximum resident set size of the job (i.e., the maximum amount of memory used by the job)
 - `ExitCode`: The exit code of the job (0 means success)
 - `Elapsed`: The elapsed time of the job (i.e., how long the job ran for)
-
-
-## `squeue`
-
-The `squeue` command is used to get information about the jobs that are currently in the queue.
-You can call the command with no arguments to see all of the jobs in the queue, but that will
-probably not be very useful to you. Instead, you can use the `-u` flag to see only the jobs that
-a particular user has in the queue:
-
-```console
-squeue -u <NETID>
-```
-
-This will give you a bunch of information, but the formatting is not the best. Here is another
-option that will give you longer job names and formats the output a bit better:
-
-```console
-squeue -o "%8i %10P %30j %8T %10M %5D %R" -u <NETID>
-```
-
-

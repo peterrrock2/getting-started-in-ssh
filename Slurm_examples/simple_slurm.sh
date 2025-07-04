@@ -9,4 +9,5 @@
 # Load any necessary modules or environment variables here
 echo "Hello from the Slurm job script!" # This will appear in the output file
 echo "This is an error appearing in the slurm job script!" >&2 # This will appear in the error file
+# The >&2 redirects the output from the "echo" command to the standard error stream
 
