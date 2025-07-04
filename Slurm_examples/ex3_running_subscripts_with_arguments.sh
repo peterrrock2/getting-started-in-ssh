@@ -11,5 +11,5 @@ array2=("Mars" "World")
 
 for i in {0..1}
 do
-    sbatch example_child_script_with_arguments.sh "${array1[$i]}" "${array2[$i]}"
+    sbatch ex3_example_child_script_with_arguments.sh "${array1[$i]}" "${array2[$i]}"
 done

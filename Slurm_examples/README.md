@@ -159,16 +159,16 @@ In bash, the command to print to the standard output stream is `echo`, but if we
 this output to a file, we would use the `>` operator like this:
 
 ```bash
-echo "Hello from the Slurm job script!" > simple_slurm_output.out
+echo "Hello from the Slurm job script!" > ex1_simple_slurm_output.out
 ```
 
-This will create a BLANK file called `simple_slurm_output.out` and write the text 
+This will create a BLANK file called `ex1_simple_slurm_output.out` and write the text 
 "Hello from the Slurm job script!" to the file. If we did not want to overwrite the contents
 of the file, we could use the `>>` operator instead:
 
 ```bash
-echo "Hello from the Slurm job script!" >> simple_slurm_output.out
-echo "Hello again from the Slurm job script!" >> simple_slurm_output.out
+echo "Hello from the Slurm job script!" >> ex1_simple_slurm_output.out
+echo "Hello again from the Slurm job script!" >> ex1_simple_slurm_output.out
 ```
 
 If, however, we wanted to redirect the output to the standard error stream, we would do the 
@@ -181,15 +181,15 @@ echo "I will be printed to the standard error stream!" >&2
 Here the `&2` is a special character that stands for the standard error stream. However, if we run
 this in our terminal, it will be a bit hard to see the difference between the two streams since
 they are both printed to the same place, so to make this distinction clearer and to put all
-of these ideas together, we have the "simple_slurm.sh" script that you can run on the cluster.
+of these ideas together, we have the "ex1_simple_slurm.sh" script that you can run on the cluster.
 
 
-## `simple_slurm.sh`
+## `ex1_simple_slurm.sh`
 
 This is a very simple script that will run on the cluster and should create two files:
 
-* `simple_slurm_output.out`
-* `simple_slurm_error.log`
+* `ex1_simple_slurm_output.out`
+* `ex1_simple_slurm_error.log`
 
 The first file will contain the output from the job, and the second will contain any error messages.
 You will see in the file that there are two lines of commands:
@@ -202,14 +202,14 @@ echo "This is an error appearing in the slurm job script!" >&2 # This will appea
 So, after running the script via
 
 ```bash
-sbatch simple_slurm.sh
+sbatch ex1_simple_slurm.sh
 ```
 
-you should see "Hello from the Slurm job script!" in the file `simple_slurm_output.out` and
-"This is an error appearing in the slurm job script!" in the file `simple_slurm_error.log`.
+you should see "Hello from the Slurm job script!" in the file `ex1_simple_slurm_output.out` and
+"This is an error appearing in the slurm job script!" in the file `ex1_simple_slurm_error.log`.
 
 
-## `running_subscripts.sh`
+## `ex2_running_subscripts.sh`
 
 Like the previous script, this script is pretty simple. In all likelihood, when you are running
 things on the cluster, you will want to run a bunch of jobs all at once. Generally, the best
@@ -219,10 +219,10 @@ just creates a single job that will print to the "single_sub_slurm_output.out" f
 You should execute this file using
 
 ```bash
-./running_subscripts.sh
+./ex2_running_subscripts.sh
 ```
 
-## `running_subscripts_with_arguments.sh`
+## `ex3_running_subscripts_with_arguments.sh`
 
 In the previous script, we just created a single job that ran on the cluster, but in the real
 world, we will probably want to run a bunch of jobs with different arguments. This can
@@ -244,7 +244,7 @@ echo "Argument 2: $arg2"
 This script can be run on the command line like this:
 
 ```bash
-./example_argument_script.sh "Hello" "World"
+./ex3_example_argument_script.sh "Hello" "World"
 ```
 
 This will print the following to the screen:
@@ -256,3 +256,52 @@ Argument 2: World
 
 Okay, so we can now make a list of arguments to pass to our child script, and we do that in
 this example file.
+
+
+## `ex4_running_subscripts_with_python_clis.sh`
+
+Okay, so the previous script allowed us to call a bash subscript from within a bash script,
+but we like to use python, so how to we modify the above approach to use our perferred
+programming language? Well, we just need to build a simple Command Line Interface (CLI) for
+our python script. We will do this by using the `click` python package since its interface
+is pretty self-explanatory.
+
+Here is all the code that we need to make a simple python CLI:
+
+```python
+import click
+
+@click.command()
+@click.argument('--arg1')
+@click.argument('--arg2')
+def main(arg1, arg2):
+    print(f"Python Argument 1: {arg1}")
+    print(f"Python Argument 2: {arg2}")
+    print("ERROR: This is a simulated error.", file=sys.stderr)
+    
+if __name__ == '__main__':
+    main()
+```
+
+The `@click.command()` decorator is used to tell the python interpreter that this is a CLI
+and that it should be run when the file is executed. We can then use this CLI from the terminal
+like this:
+
+```console
+python ex4_cli_example.py --arg1='Hello' --arg2='World'
+```
+
+
+This will print the following to the screen:
+
+```console
+Python Argument 1: Hello
+Python Argument 2: World
+```
+
+The `--arg1` and `--arg2` flags are used to pass the arguments to the python script just like
+how keyword arguments are passed to a python function.
+
+
+When it comes to batching things with SLURM, not a whole lot changes from what we did in
+the previous example as you can see if you dig through the files.

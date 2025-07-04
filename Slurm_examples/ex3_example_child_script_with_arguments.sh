@@ -2,8 +2,8 @@
 #SBATCH --mem=1G  # Request 1 GB of memory
 #SBATCH --time=00:05:00  # Request 5 minutes of runtime
 #SBATCH --job-name=child_process_with_arguments # Set the job name to "child_process_with_arguments"
-#SBATCH --output=slurm_outputs/arguments_slurm_output_%j.out # The %j will be replaced with the SLURM job ID
-#SBATCH --error=slurm_logs/arguments_slurm_error_%j.log # The %j will be replaced with the SLURM job ID
+#SBATCH --output=slurm_outputs/ex3_arguments_slurm_output_%j.out # The %j will be replaced with the SLURM job ID
+#SBATCH --error=slurm_logs/ex3_arguments_slurm_error_%j.log # The %j will be replaced with the SLURM job ID
 
 
 command=$0 # Get the name of the command being executed currently
