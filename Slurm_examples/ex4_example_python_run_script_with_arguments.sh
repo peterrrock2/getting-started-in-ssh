@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --mem=1G  # Request 1 GB of memory
 #SBATCH --time=00:05:00  # Request 5 minutes of runtime
-#SBATCH --job-name=child_process_with_arguments # Set the job name to "child_process_with_arguments"
+#SBATCH --job-name=python_cli_child_process_with_arguments # Set the job name to "child_process_with_arguments"
 #SBATCH --output=slurm_outputs/ex4_python_arguments_slurm_output_%j.out # The %j will be replaced with the SLURM job ID
 #SBATCH --error=slurm_logs/ex4_python_arguments_slurm_error_%j.log # The %j will be replaced with the SLURM job ID
 
