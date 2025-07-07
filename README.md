@@ -13,7 +13,7 @@ The HPC runs on Linux (specifically the distro Ubuntu), and, since many people h
 to no experience working within a terminal, it is probably a decent idea to have
 a sheet to remind you of all of the relevant commands.
 
-## Transferring_files.md
+## Moving_files_to_and_from_the_cluster.md
 
 This file contains all of the relevant commands for transferring files to and from the HPC.
 You can do this either using the terminal, or by using a GUI-based file-transfer program
